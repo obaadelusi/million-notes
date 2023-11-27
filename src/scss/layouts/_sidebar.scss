@@ -1,0 +1,87 @@
+@use '../variables' as *;
+
+/*****************
+    Sidebar Section
+******************/
+.sidebar {
+    background-color: $white;
+    border-left: 1px solid $grey-200;
+    border-right: 1px solid $grey-200;
+    flex: 1 0 300px;
+    min-height: 100vh;
+    position: relative;
+    display: none;
+    transform: translateX(100%);
+    transition: transform 300ms ease;
+
+    @media (min-width:1000px) {
+        display: none;
+        transform: translateX(100%);
+
+        &.show {
+            display: block;
+            transform: translateX(0);
+        }
+    }
+
+    &-container {
+        display: inline-block;
+        position: sticky;
+        top: 0;
+        padding: 1em;
+        width: 100%;
+    }
+
+    &__header {
+        display: grid;
+        gap: 1em;
+    }
+
+    .btn--black {
+        border-radius: $border-radius--large;
+        justify-content: center;
+        width: 100%;
+
+        &:hover {
+            background-color: $primary-clr;
+        }
+    }
+
+    input {
+        border-radius: $border-radius--large;
+        font-size: .875rem;
+    }
+
+    &__all-skills {
+        margin-top: 1em;
+
+        h2 {
+            color: $black;
+            font-family: $font-sans;
+            font-size: $h4;
+            letter-spacing: -0.5px;
+            margin-top: 2em;
+            margin-bottom: .75em;
+        }
+    }
+
+    &__skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .5em;
+
+        span {
+            cursor: default;
+            background-color: $grey-bg;
+            border: 2px dashed transparent;
+            border-radius: $border-radius--large;
+            color: $text-clr;
+            font-size: .875rem;
+            padding: .25em .75em;
+
+            &:hover {
+                border-color: $primary-clr;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@use './variables' as *;
+
+
+/* Error Page Styles */
+
+/*****************
+    Error page
+******************/
+
+.error-page {
+    background-color: $grey-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+
+    &-container {
+        max-width: 600px;
+    }
+
+    h2 {
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        color: $text-clr;
+        margin-bottom: 1em;
+    }
+}

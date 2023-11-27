@@ -1,0 +1,61 @@
+@use '../variables' as *;
+
+
+/*****************
+    Top bar Section
+******************/
+.topbar {
+    background-color: $grey-200;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/*****************
+    Navbar Section
+******************/
+.navbar {
+    border-bottom: 1px solid $grey-200;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    &-container {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        letter-spacing: .25px;
+        text-transform: uppercase;
+        font-weight: 500;
+
+        span {
+            color: #402BCA;
+        }
+    }
+
+    &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.75em;
+    }
+
+    &-list,
+    &-login-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        gap: 1em;
+    }
+
+    &-list {
+        margin-left: auto;
+    }
+
+    .nav-link {
+        color: $black;
+        font-weight: 500;
+        font-size: $fs-large;
+    }
+}

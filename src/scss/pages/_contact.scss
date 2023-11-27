@@ -1,0 +1,64 @@
+@use './variables' as *;
+
+/* Contact Page Styles */
+
+/*****************
+    Contact Form
+******************/
+.contact__form {
+    background-color: $grey-bg;
+    border-radius: $border-radius--medium;
+    margin: 2em auto;
+    max-width: 500px;
+    padding: 3em 2em;
+
+    .btn--black {
+        padding: .75em 2em;
+
+        &:hover {
+            background-color: $primary-clr;
+        }
+    }
+}
+
+/*****************
+    Social links
+******************/
+.social {
+    margin-top: 4em;
+    text-align: center;
+
+    &__links {
+        background-color: $grey-bg;
+        border-radius: $border-radius--small;
+        list-style: none;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+
+        li {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            background-color: $black;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $primary-clr;
+            }
+        }
+
+        a {
+            color: $white;
+            display: block;
+            height: 100%;
+            padding: 1em;
+            text-decoration-color: transparent;
+            width: 100%;
+        }
+    }
+}

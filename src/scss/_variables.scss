@@ -1,0 +1,58 @@
+/*****************
+    Variables
+******************/
+
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+$font-display: 'Oswald', serif;
+$font-mono: monospace;
+
+$h1: clamp(2rem, 4vw, 2.75rem);
+$h2: clamp(1.75rem, 3vw, 2rem);
+$h3: clamp(1.25rem, 2vw, 1.5rem);
+$h4: clamp(1.0625rem, 2vw, 1.25rem);
+$fs-large: 1.0625rem;
+$fs-regular: 1rem;
+$fs-small: 0.875rem;
+$fs-xsmall: 0.75rem;
+
+$border-radius--small: 0.325em;
+$border-radius--medium: 1em;
+$border-radius--large: 1.5em;
+
+// #3b40b7
+// #41ac55
+// #7cc38b
+// #b7dbc1
+// #f2f3f7
+
+$test-clr: hsl(182, 83%, 9%);
+
+$grey-bg: #f5f5f7;
+$grey-100: #f2f2f4;
+$grey-200: #e2e2e7;
+$grey-300: #ccc;
+$grey-400: #666;
+$grey-500: #555;
+$black: #000;
+$white: #fff;
+
+:root {
+    --hue: 248;
+    --sec-hue: 37;
+}
+
+$primary-hue: var(--hue);
+$primary-clr: hsl($primary-hue, 92%, 25%);
+// $primary-clr: hsl(248, 65%, 48%);
+$primary-clr-dark: hsl($primary-hue, 100%, 25%);
+$primary-100: hsl($primary-hue, 80%, 98%);
+$primary-200: hsl($primary-hue, 80%, 93%);
+
+$sec-hue: var(--sec-hue);
+$sec-clr: hsl($sec-hue, 98%, 53%);
+
+$link-blue: #0066dd;
+$text-clr: #45454f;
+
+$black: #0a0a0a;
+$white: #fff;

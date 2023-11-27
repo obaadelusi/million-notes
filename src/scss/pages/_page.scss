@@ -1,0 +1,13 @@
+@use './variables' as *;
+
+/* Single Page Styles */
+
+/*****************
+    Content Section
+******************/
+.page {
+    &__content {
+        margin-right: auto;
+        max-width: 820px;
+    }
+}

@@ -1,0 +1,74 @@
+@use './variables' as *;
+
+/*****************
+    Base
+******************/
+
+/* Reset */
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: $font-sans;
+    margin: auto;
+    position: relative;
+    height: 100%;
+}
+
+/* Element Defaults */
+ul,
+ol {
+    padding-inline-start: 0;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* Helpers - Container */
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+/* Helpers - Text */
+.text-upper {
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+
+/* Helpers - CK Editor */
+#editor,
+.ck-editor {
+    max-width: 800px;
+}
