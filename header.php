@@ -22,8 +22,6 @@
                 </div>
                 <ul class="navbar-list">
                     <li><a href="index.php" class="nav-link">Home</a></li>
-                    <li><a href="books.php" class="nav-link">Books</a></li>
-                    <li><a href="post.php" class="nav-link">BookNotes</a></li>
                     <li><a href="post.php" class="nav-link">About</a></li>
                 </ul>
                 <ul class="navbar-login-list">
