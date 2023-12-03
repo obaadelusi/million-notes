@@ -1,12 +1,20 @@
 @use './variables' as *;
 
+/* Single Page Styles */
 
-/* Error Page Styles */
+/*****************
+    Signup page
+******************/
+.page {
+    &__content {
+        margin-right: auto;
+        max-width: 820px;
+    }
+}
 
 /*****************
     Error page
 ******************/
-
 .error-page {
     background-color: $grey-bg;
     display: flex;

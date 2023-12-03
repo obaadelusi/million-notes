@@ -22,14 +22,16 @@ body {
     margin: auto;
     position: relative;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Element Defaults */
 ul,
 ol {
     padding-inline-start: 0;
 }
 
+/* Helpers - Visibility */
 [hidden] {
     display: none !important;
 }
