@@ -4,15 +4,21 @@
     Hero Section
 ******************/
 .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 2em;
-    padding: 1em 0;
+    background-color: $grey-bg;
 
-    @media (max-width:578px) {
-        flex-direction: column-reverse;
+    &-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 2em;
+        padding: 1em 0;
+
+        @media (max-width:578px) {
+            flex-direction: column;
+            padding-top: 100px;
+        }
     }
+
 
     &-content {
         align-self: center;
@@ -20,12 +26,72 @@
 
         small {
             display: block;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75em;
             text-transform: uppercase;
         }
 
         h1 {
-            margin-bottom: .125em;
+            margin-bottom: .25em;
+        }
+
+        p {
+            font-weight: 500;
+        }
+    }
+
+    &-image {
+        align-self: center;
+        flex: 1 1 300px;
+        display: flex;
+        align-items: center;
+        max-width: 500px;
+        height: 360px;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: top left;
+        }
+    }
+}
+
+/*****************
+    Month Read Section
+******************/
+.monthread {
+    gap: 1em;
+    width: fit-content;
+
+    &-card {
+        background-color: $white;
+        display: flex;
+        align-items: start;
+        gap: 1.5em;
+        border: 1px solid $grey-400;
+        border-radius: $border-radius--medium;
+        margin-bottom: 1em;
+        max-width: 600px;
+        overflow: hidden;
+
+        @media (max-width:578px) {
+            flex-direction: column-reverse;
+        }
+    }
+
+    &-content {
+        align-self: center;
+        flex-grow: 1;
+        padding: 1em 1em 1em 1.25em;
+
+        small {
+            display: block;
+            margin-bottom: 0.75em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin-bottom: .25em;
         }
 
         p:first-of-type {
@@ -46,40 +112,31 @@
         align-items: center;
         justify-content: center;
         background-color: #ffffff;
-        background-image: radial-gradient($grey-400 1px, #ffffff 1px);
+        background-image: radial-gradient($grey-400 1px, $white 1px);
         background-size: 18px 18px;
-        height: 330px;
+        height: 300px;
 
         img {
             opacity: 1;
-            // width: 100%;
-            // height: 100%;
-            // object-fit: cover;
         }
+    }
+
+    &-sugesstioncard {
+        max-width: 600px;
+        background-color: $white;
+        background: repeating-linear-gradient(-45deg, $grey-100, $grey-100 3px, $white 4px, $white 30px);
     }
 
 }
 
 /*****************
-    Featured Product Section
+    CTA Section
 ******************/
-.homepage {
-    &-featured-product {
-        border: 1px solid transparent;
-
-        &:hover {
-            border-color: $primary-clr;
-        }
-    }
-
-    &-product__image {
-        display: block;
-
-        >img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-    }
+.indexcta {
+    background-color: $grey-bg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }

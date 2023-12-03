@@ -10,6 +10,18 @@
     padding: 10px;
 }
 
+/*****************
+    Logo
+******************/
+.logo {
+    letter-spacing: .25px;
+    text-transform: uppercase;
+    font-weight: 500;
+
+    span {
+        color: #402BCA;
+    }
+}
 
 /*****************
     Navbar Section
@@ -21,16 +33,6 @@
 
     &-container {
         flex-wrap: wrap;
-    }
-
-    .logo {
-        letter-spacing: .25px;
-        text-transform: uppercase;
-        font-weight: 500;
-
-        span {
-            color: #402BCA;
-        }
     }
 
     &-container {

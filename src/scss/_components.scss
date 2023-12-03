@@ -4,6 +4,7 @@
     Buttons
 ******************/
 .btn {
+    appearance: none;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -11,8 +12,10 @@
     border: 1.8px solid transparent;
     border-radius: 4px;
     cursor: pointer;
+    font-family: inherit;
     font-size: 15px;
     font-weight: 500;
+    margin-right: .5em;
     padding: .45em .75em;
     text-decoration: none;
     transition: background-color 200ms ease-in;
@@ -48,6 +51,7 @@
         @extend .btn;
         text-decoration: underline 1px solid $primary-clr;
         color: $primary-clr;
+        padding: 0;
     }
 
     &-lg {
@@ -85,9 +89,9 @@ figcaption {
     Avatars
 ******************/
 .avatar {
-    background-color: var(--grey-500);
+    background-color: $grey-500;
     border-radius: 50%;
-    color: var(--clr-text-white);
+    color: $text-white;
     display: inline-flex;
     align-items: center;
     justify-content: center;
