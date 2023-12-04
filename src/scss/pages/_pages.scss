@@ -3,13 +3,15 @@
 /* Single Page Styles */
 
 /*****************
-    Signup page
+    Signup/Login pages
 ******************/
-.page {
-    &__content {
-        margin-right: auto;
-        max-width: 820px;
-    }
+main#signup-page,
+main#login-page {
+    width: 100%;
+    background-color: $white;
+    background-image: radial-gradient($grey-300 1.3px, transparent 1.3px), radial-gradient($grey-300 1.3px, $white 1.3px);
+    background-size: 52px 52px;
+    background-position: 0 0, 26px 26px;
 }
 
 /*****************

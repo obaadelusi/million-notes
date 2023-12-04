@@ -30,16 +30,17 @@ $grey-500: #555;
 
 :root {
     // --hue: 248;
-    --hue: 205;
+    --hue: 210;
     --sec-hue: 37;
 }
 
 $primary-hue: var(--hue);
-$primary-clr: hsl($primary-hue, 92%, 25%);
-// $primary-clr: hsl(248, 65%, 48%);
-$primary-clr-dark: hsl($primary-hue, 100%, 25%);
+$primary-clr: hsl($primary-hue, 80%, 30%);
 $primary-100: hsl($primary-hue, 80%, 98%);
 $primary-200: hsl($primary-hue, 80%, 93%);
+$primary-300: hsl($primary-hue, 80%, 85%);
+$primary-400: hsl($primary-hue, 80%, 75%);
+$primary-900: hsl($primary-hue, 80%, 25%);
 
 $sec-hue: var(--sec-hue);
 $sec-clr: hsl($sec-hue, 98%, 53%);
@@ -49,4 +50,5 @@ $text-clr: #45454f;
 
 $black: #000;
 $white: #fff;
+$text-black: #000;
 $text-white: #fff;

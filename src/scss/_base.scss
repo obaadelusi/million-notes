@@ -26,6 +26,10 @@ body {
     flex-direction: column;
 }
 
+main {
+    flex-grow: 1;
+}
+
 ul,
 ol {
     padding-inline-start: 0;
@@ -65,13 +69,24 @@ ol {
 /* Helpers - Text */
 .text-upper {
     text-transform: uppercase;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.25px;
+}
+
+.text-center {
+    text-align: center !important;
 }
 
 /* Helpers - Padding */
 .section-padding {
     padding-top: 2em;
     padding-bottom: 2em;
+}
+
+/* Helpers - Content center */
+.content-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Helpers - CK Editor */

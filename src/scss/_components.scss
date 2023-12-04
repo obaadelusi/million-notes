@@ -5,6 +5,7 @@
 ******************/
 .btn {
     appearance: none;
+    background-color: transparent;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -58,6 +59,12 @@
         border-radius: 1em;
         font-size: $fs-large;
     }
+
+    &-stretch {
+        flex-grow: 1;
+        font-size: $h4;
+        margin-right: 0;
+    }
 }
 
 /*****************
@@ -101,6 +108,15 @@ figcaption {
     width: 42px;
     user-select: none;
     overflow: hidden;
+}
+
+/*****************
+    Card
+******************/
+.card {
+    border: 1.5px solid $grey-200;
+    border-radius: .5em;
+    padding: 1.5em;
 }
 
 /*****************

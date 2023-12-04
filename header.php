@@ -25,8 +25,8 @@
                     <li><a href="post.php" class="nav-link">About</a></li>
                 </ul>
                 <ul class="navbar-login-list">
-                    <li><a href="login.php" class="btn-link">Log In</a></li>
-                    <li><a href="signup.php" class="btn-outline-primary">Join Club</a></li>
+                    <li><a href="login-form.php" class="btn-link">Log In</a></li>
+                    <li><a href="signup-form.php" class="btn-outline-primary">Join Club</a></li>
                     <li><a href="logout.php" class="btn-link">Log Out</a></li>
                 </ul>
             </div>

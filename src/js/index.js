@@ -1,85 +1,149 @@
-const myCarouselElement = document.querySelector("#heroCarousel");
-
-const carousel = new bootstrap.Carousel(myCarouselElement, {
-    interval: 5000,
-    touch: false,
-});
-
-// document.addEventListener("DOMContentLoaded", load);
+document.addEventListener("DOMContentLoaded", load);
 
 function load() {
     // Validate form
-    document.getElementById("reset").addEventListener("click", clearFields);
-
-    document.getElementById("contact-form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        hideErrors();
-
-        if (!formHasErrors()) {
-            showModal();
-        }
-    });
-
     hideErrors();
+
+    const signupForm = document.getElementById("signup-form");
+    signupForm &&
+        signupForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            hideErrors();
+
+            if (!signupFormHasErrors()) {
+                signupForm.submit();
+            }
+        });
+
+    const loginForm = document.getElementById("login-form");
+    loginForm &&
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            hideErrors();
+
+            if (!loginFormHasErrors()) {
+                loginForm.submit();
+            }
+        });
 }
 
-function showModal() {
-    const modal = document.getElementById("modal");
+function hideErrors() {
+    const errors = document.getElementsByClassName("input-error");
 
-    const contactName = document.getElementById("name").value;
-
-    document.getElementById("modal-wrapper").innerHTML = `<h3>Hey ${contactName} ✅,</h3> <p>Thank you for saying hi. <br> Will respond by email shortly.</p><button class="btn--black" id="close-modal">Close</button>`;
-
-    modal.classList.add("show");
-
-    const closeModalBtn = document.getElementById("close-modal");
-    closeModalBtn.addEventListener("click", () => {
-        modal.classList.remove("show");
-
-        window.location.replace("https://obaadelusi.github.io");
-    });
+    for (const inputError of errors) {
+        inputError.style.display = "none";
+    }
 }
 
-function formHasErrors() {
+function signupFormHasErrors() {
     let hasErrors = false;
 
-    // const phoneValue = document.getElementById("phone").value;
+    const userValue = document.getElementById("username").value;
     const emailValue = document.getElementById("email").value;
+    const passValue = document.getElementById("password").value;
+    const confirmPassValue = document.getElementById("confirmPassword").value;
 
-    if (formInputIsEmpty()) {
+    if (signupFormIsEmpty()) {
         hasErrors = true;
     }
 
-    // const phoneRegex = new RegExp(/^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/);
-    // const phoneIsValid = phoneRegex.test(trim(phoneValue));
+    // Username validation
+    const userRegex = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,15}$/);
+    const userIsValid = userRegex.test(trim(userValue));
 
-    // if (trim(phoneValue).length > 0 && !phoneIsValid) {
-    //     document.getElementById(`phoneformat_error`).style.display = "block";
-    //     hasErrors = true;
-    //}
+    if (trim(userValue).length > 0 && !userIsValid) {
+        document.getElementById(`usernameformat_error`).style.display = "block";
+        hasErrors = true;
+    }
 
-    const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-    const emailIsValid = emailRegex.test(trim(emailValue));
+    // Email validation
+    const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,5}$/);
+    const isValidEmail = emailRegex.test(emailValue);
 
-    if (trim(emailValue).length > 0 && !emailIsValid) {
-        document.getElementById(`emailformat_error`).style.display = "block";
+    if (trim(emailValue).length > 0 && !isValidEmail) {
+        document.getElementById("email_error").style = "block";
+        hasErrors = true;
+    }
+
+    // Password validation
+    const passRegex = new RegExp(/[A-Za-z0-9_]{6,16}/);
+    const passIsValid = passRegex.test(trim(passValue));
+
+    if (trim(passValue).length > 0 && !passIsValid) {
+        document.getElementById(`password_error`).style.display = "block";
+        hasErrors = true;
+    }
+
+    // Confirm Password validation
+    if (trim(passValue) != confirmPassValue) {
+        document.getElementById(`confirmPassword_error`).style.display = "block";
         hasErrors = true;
     }
 
     return hasErrors;
 }
 
-function formInputIsEmpty() {
+function loginFormHasErrors() {
+    let hasErrors = false;
+
+    const userValue = document.getElementById("username").value;
+    const passValue = document.getElementById("password").value;
+
+    if (loginFormIsEmpty()) {
+        hasErrors = true;
+    }
+
+    // Username validation
+    const userRegex = new RegExp(/^[A-Za-z][A-Za-z0-9_]{2,15}$/);
+    const userIsValid = userRegex.test(trim(userValue));
+
+    if (trim(userValue).length > 0 && !userIsValid) {
+        document.getElementById(`nameformat_error`).style.display = "block";
+        hasErrors = true;
+    }
+
+    // Password validation
+    const passRegex = new RegExp(/[A-Za-z0-9_]{6,16}/);
+    const passIsValid = passRegex.test(trim(passValue));
+
+    if (trim(passValue).length > 0 && !passIsValid) {
+        document.getElementById(`passformat_error`).style.display = "block";
+        hasErrors = true;
+    }
+
+    return hasErrors;
+}
+
+function signupFormIsEmpty() {
     let inputIsEmpty = false;
 
-    const nameInput = document.getElementById("name"),
-        // phoneInput = document.getElementById("phone"),
-        emailInput = document.getElementById("email"),
-        messageTxt = document.getElementById("message");
+    const username = document.getElementById("username"),
+        email = document.getElementById("email"),
+        password = document.getElementById("password"),
+        confirmPassword = document.getElementById("confirmPassword");
 
-    const contactInputs = [messageTxt, emailInput, nameInput];
+    const signupInputs = [confirmPassword, password, email, username];
 
-    for (const input of contactInputs) {
+    for (const input of signupInputs) {
+        if (trim(input.value).length == 0) {
+            document.getElementById(`${input.id}_error`).style.display = "block";
+            inputIsEmpty = true;
+            input.focus();
+        }
+    }
+
+    return inputIsEmpty;
+}
+
+function loginFormIsEmpty() {
+    let inputIsEmpty = false;
+
+    const username = document.getElementById("username"),
+        password = document.getElementById("password");
+
+    const signupInputs = [password, username];
+
+    for (const input of signupInputs) {
         if (trim(input.value).length == 0) {
             document.getElementById(`${input.id}_error`).style.display = "block";
             inputIsEmpty = true;
@@ -95,14 +159,6 @@ function clearFields() {
 
     for (const input of inputs) {
         input.value = "";
-    }
-}
-
-function hideErrors() {
-    const errors = document.getElementsByClassName("input-error");
-
-    for (const inputError of errors) {
-        inputError.style.display = "none";
     }
 }
 
