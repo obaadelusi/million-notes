@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     gap: .25em;
-    border: 1.8px solid transparent;
+    border: 2px solid transparent;
     border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
@@ -23,8 +23,7 @@
 
     &:focus,
     &:focus-visible {
-        border-color: $primary-clr;
-        outline-color: $primary-clr;
+        box-shadow: 0 0 0 4px $primary-300;
     }
 
     &-primary {
@@ -56,7 +55,6 @@
     }
 
     &-lg {
-        border-radius: 1em;
         font-size: $fs-large;
     }
 
@@ -93,6 +91,35 @@ figcaption {
 }
 
 /*****************
+    Alerts
+******************/
+.alert {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.75em;
+    margin-bottom: 0.75em;
+    padding: 0.75em 1em;
+
+    >svg {
+        align-self: flex-start;
+    }
+
+    >p {
+        font-size: $fs-small;
+        margin-bottom: 0
+    }
+
+    &-info {
+        @extend .alert;
+        background-color: $clr-info-light;
+        color: $clr-info;
+    }
+}
+
+
+/*****************
     Avatars
 ******************/
 .avatar {
@@ -114,9 +141,11 @@ figcaption {
     Card
 ******************/
 .card {
+    background-color: $white;
     border: 1.5px solid $grey-200;
     border-radius: .5em;
     padding: 1.5em;
+    width: 100%;
 }
 
 /*****************

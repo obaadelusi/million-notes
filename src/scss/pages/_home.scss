@@ -39,6 +39,12 @@
         }
     }
 
+    &-cta {
+        .btn-primary {
+            border-radius: 1em;
+        }
+    }
+
     &-image {
         align-self: center;
         flex: 1 1 300px;

@@ -1,29 +1,39 @@
 <?php
+session_start();
 
-/*******w******** 
-    
-    Name: Obafunsho Adelusi
-    Date: September 26
-    Description: Assignment 3 - Blog
-
-****************/
+if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']=true) {
+    header('Location: dashboard.php');
+}
 
 require('connect.php');
-    
-// SQL is written as a String.
-$query = "SELECT * FROM blog ORDER BY date_posted DESC LIMIT 8";
 
-// A PDO::Statement is prepared from the query.
-$statement = $db->prepare($query);
+// This month's read.
+$this_month_query = "SELECT bus.suggestion_id, bus.book_id, bus.sugg_date
+                , b.book_title, b.book_subtitle, b.book_author
+                FROM books_users_suggestions bus
+                JOIN books b ON bus.book_id = b.book_id 
+                WHERE bus.is_selected = 1 AND
+                    MONTH(bus.sugg_date) = 11 AND 
+                    YEAR(bus.sugg_date) = 2023";
 
-// Execution on the DB server is delayed until we execute().
-$statement->execute(); 
+$this_month_stmt = $db->prepare($this_month_query);
+$this_month_stmt->execute(); 
+$this_month = $this_month_stmt->fetch();
+
+// Next month's suggestion
+$next_month_query = "SELECT * 
+                    FROM books_users_suggestions
+                    WHERE sugg_date > CURDATE()";
+
+$next_month_stmt = $db->prepare($next_month_query);
+$next_month_stmt->execute();
+$next_month = $next_month_stmt->fetch();
 
 ?>
 
 <?php include('header.php'); ?>
 
-<main class="main">
+<main class="main" id="home-page">
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-content">
@@ -32,7 +42,7 @@ $statement->execute();
                 <p>🖊 Read. Review. Make notes. Monthly.</p>
 
                 <div class="hero-cta">
-                    <a href="m-notes.php?book_id=1" class="btn-primary btn-lg">Join Club</a>
+                    <a href="signup-form.php" class="btn-primary btn-lg">Join Club</a>
                     <a href="#" class="btn-link">View Monthly Reads</a>
                 </div>
             </div>
@@ -46,11 +56,11 @@ $statement->execute();
         <div class="monthread-card ">
             <div class="monthread-content">
                 <small>⭐ This Month's Read</small>
-                <h3>Million Dollar Habits</h3>
-                <p>Proven Power Practices to Double & Triple Your Income</p>
-                <p><em>by</em>&ensp;Brian Tracy</p>
+                <h3><?=$this_month['book_title']?></h3>
+                <p><?=$this_month['book_subtitle']?></p>
+                <p><em>by</em>&ensp;<?=$this_month['book_author']?></p>
                 <div class="monthread-cta">
-                    <a href="m-notes.php?book_id=1" class="btn-outline-primary">Read BookNotes -></a>
+                    <a href="book-notes/show.php?book_id=<?=$this_month['book_id']?>" class="btn-outline-primary">Read BookNotes -></a>
                 </div>
             </div>
             <div class="monthread-image">
@@ -60,11 +70,11 @@ $statement->execute();
         <div class="monthread-sugesstioncard">
             <div class="monthread-content">
                 <small>⏭ Next Month - <?=(new \DateTime('next month'))->format('F Y')?></small>
-                <h3>25 Book Suggestions</h3>
+                <h3><?=$next_month_stmt->rowCount();?> Book Suggestions</h3>
                 <p>Top Suggestion: 🥇 Becoming <em>by</em>&ensp;Michelle Obama</p>
                 <p></p>
                 <div class="monthread-cta">
-                    <a href="m-notes.php?book_id=1" class="btn-link">View Suggestions -></a>
+                    <a href="book-suggestions" class="btn-link">View Suggestions -></a>
                 </div>
             </div>
         </div>

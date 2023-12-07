@@ -31,7 +31,7 @@ if ($stmt = $db->prepare('SELECT user_id, user_pass FROM users WHERE user_name =
 
         if(trim($pass) != $confirm_pass) exit("Please make sure your passwords match!");
 
-        if ($stmt = $db->prepare('INSERT INTO users (user_name, user_email, user_pass) VALUES (:user, :email, :pass)')) {
+        if ($stmt = $db->prepare('INSERT INTO users (user_name, user_email, user_pass, role_id) VALUES (:user, :email, :pass, 2)')) {
             // We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
             $hash_pass = password_hash($pass, PASSWORD_DEFAULT);
 
@@ -41,7 +41,7 @@ if ($stmt = $db->prepare('SELECT user_id, user_pass FROM users WHERE user_name =
             $stmt->execute();
 
             // echo 'You have successfully registered! You can now login!';
-            header("Location: login.php");
+            header("Location: login-form.php");
             exit;
         } else {
             // Something is wrong with the SQL statement, so you must check to make sure your accounts table exists with all three fields.

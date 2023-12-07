@@ -1,9 +1,21 @@
 
 <?php include('header.php'); ?>
 
+<?php if(isset($_SESSION['loggedin'])) { ?>
+    <main class="main content-center" id="signup-page">
+        <section class="card" style="max-width:400px;">
+            <p class="text-center">Your are logged in with account:</p>
+            <h2 class="text-center"><span>@<?=$_SESSION['name']?></span></h2>
+            <div>
+                <a href="logout.php" class="btn-primary btn-lg">Logout</a>
+            </div>
+        </section>
+    </main>
+
+<?php } else { ?>
 <main class="main content-center" id="signup-page">
     <section class="form card">
-        <form action="register.php" method="post" id="signup-form">
+        <form action="signup.php" method="post" id="signup-form">
             <h1 class="form-heading">Sign up 🔮</h1>
             <p class="text-center">🔱 Join the exclusive Million Club.</p>
             <div class="form-control">
@@ -33,6 +45,8 @@
         </form>
     </section>
 </main>
+
+<?php } ?>
 
 <?php include('footer.php'); ?>
 

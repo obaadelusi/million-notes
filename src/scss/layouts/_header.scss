@@ -6,6 +6,7 @@
 ******************/
 .topbar {
     background-color: $grey-200;
+    font-size: $fs-xsmall;
     text-align: center;
     padding: 10px;
 }
@@ -17,6 +18,10 @@
     letter-spacing: .25px;
     text-transform: uppercase;
     font-weight: 500;
+
+    a {
+        color: $text-black;
+    }
 
     span {
         color: #402BCA;

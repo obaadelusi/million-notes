@@ -1,7 +1,7 @@
 {
     "name": "webdproject_obafunsho_adelusi",
     "version": "1.0.0",
-    "description": "Web Dev F",
+    "description": "Web Dev Project",
     "main": "index.js",
     "scripts": {
         "dev": "gulp"
