@@ -18,7 +18,7 @@ textarea {
     }
 
     &:focus {
-        outline-color: $primary-900;
+        outline-color: $primary-clr;
         box-shadow: 0 0 0 5px $primary-300;
     }
 }

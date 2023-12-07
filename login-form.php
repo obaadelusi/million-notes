@@ -32,13 +32,13 @@ include('header.php');
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" >
                     <small class="input-error" id="username_error">Please enter your username</small>
-                    <small class="input-error" id="nameformat_error">Username is 3 or more characters</small>
+                    <small class="input-error" id="nameformat_error">Your username should be 3 or more characters</small>
                 </div>
                 <div class="form-control">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password">
                     <small class="input-error" id="password_error">Please enter your password</small>
-                    <small class="input-error" id="passformat_error">Password is 6 or more characters</small>
+                    <small class="input-error" id="passformat_error">Your password should be 6 or more characters</small>
                 </div>
                 <div class="form-buttons">
                     <button class="btn-primary btn-stretch">Log In</button>

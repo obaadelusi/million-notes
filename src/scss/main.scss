@@ -5,8 +5,8 @@
 @use 'layouts/header';
 @use 'layouts/footer';
 @use 'layouts/forms';
-@use 'layouts/sidebar';
 
 @use 'pages/home';
+@use 'pages/dash';
 @use 'pages/blog';
 @use 'pages/pages';

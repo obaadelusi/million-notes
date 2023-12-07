@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']=true) {
-    header('Location: dashboard.php');
+    header('Location: dashboard');
 }
 
 require('connect.php');
@@ -52,7 +52,7 @@ $next_month = $next_month_stmt->fetch();
         </div>
     </section>
 
-    <section class="monthread container section-padding">
+    <section class="monthread container py-2">
         <div class="monthread-card ">
             <div class="monthread-content">
                 <small>⭐ This Month's Read</small>
@@ -80,7 +80,7 @@ $next_month = $next_month_stmt->fetch();
         </div>
     </section>
 
-    <section class="indexcta section-padding">
+    <section class="indexcta py-2">
         <h2>📩 Get Invited</h2>
         <form action="#" class="form">
             <div class="form-control">

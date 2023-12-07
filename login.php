@@ -1,6 +1,9 @@
  <?php
 
 session_start();
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']==false) {
+  header('Location: login-form.php');
+}
 
 require 'connect.php';
 
@@ -27,11 +30,12 @@ if ($stmt = $db->prepare('SELECT user_id, user_pass FROM users WHERE user_name =
       // Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
       session_regenerate_id();
       $_SESSION['loggedin'] = TRUE;
-      $_SESSION['name'] = $inputUsername;
-      $_SESSION['id'] = $user['user_id'];
-      $_SESSION['flash_message'] = '🍀 Welcome @' . $_SESSION['name'];
+      $_SESSION['user_name'] = $inputUsername;
+      $_SESSION['user_id'] = $user['user_id'];
+      $_SESSION['user_role'] = $user['role_id'];
+      $_SESSION['flash_message'] = '🍀 Welcome @' . $inputUsername;
 
-      header('Location: dashboard.php');
+      header('Location: dashboard/index.php');
     } else {
       // Incorrect password
       echo 'Incorrect username and/or password!';
