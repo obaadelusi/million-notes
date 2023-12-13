@@ -61,9 +61,8 @@ $books_notes = $books_notes_stmt->fetch();
         </div>
 
         <div class="card dash-buttons">
-            <a href="#" class="btn-outline-primary">Add booknotes +</a>
-            <a href="#" class="btn-link">Review a book</a>
-            <a href="#" class="btn-link">Add a new book</a>
+            <a href="<?=BASE_URL.'dashboard/notes-new.php'?>" class="btn-outline-primary">Add booknotes +</a>
+            <a href="<?=BASE_URL.'dashboard/books-new.php'?>" class="btn-link">New book +</a>
         </div>
 
         <div class="card dash-account" style="max-width:360px;">
