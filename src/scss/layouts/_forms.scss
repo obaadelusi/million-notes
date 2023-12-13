@@ -27,7 +27,6 @@ textarea {
     Form Layout
 ******************/
 .form {
-    max-width: 380px;
     margin: 1em auto;
     width: 100%;
 
@@ -37,6 +36,7 @@ textarea {
     }
 
     &-control {
+        border: none;
         display: flex;
         flex-direction: column;
         gap: .125em;
@@ -65,8 +65,10 @@ textarea {
 
     .input-error {
         color: red;
-        // font-size: $fs-xsmall;
+        display: none;
+        font-size: $fs-xsmall;
         margin-bottom: 0;
+        margin-top: .25em;
         text-align: end;
     }
 

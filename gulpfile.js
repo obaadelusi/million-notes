@@ -28,7 +28,7 @@ function jsTask() {
 function browserSyncServe(cb) {
     browsersync.init({
         proxy: {
-            target: "wd2.localhost/Project/WEBDProject_Obafunsho_Adelusi",
+            target: "wd2.localhost/WEBDProject_Obafunsho_Adelusi",
         },
         notify: {
             styles: {

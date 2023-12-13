@@ -8,16 +8,17 @@ include('header.php');
     <main class="main content-center" id="login-page">
         <section class="card" style="max-width:400px;">
             <p class="text-center">Your are logged in with account:</p>
-            <h2 class="text-center"><span>@<?=$_SESSION['name']?></span></h2>
+            <h2 class="text-center"><span>@<?=$_SESSION['user_name']?></span></h2>
             <div>
-                <a href="logout.php" class="btn-primary btn-lg">Logout</a>
+                <a href="<?= BASE_URL.'dashboard' ?>" class="btn-primary">Dashboard</a>
+                <a href="logout.php" class="btn-outline-primary">Logout</a>
             </div>
         </section>
     </main>
 
 <?php } else { ?>
     <main class="main content-center" id="login-page">
-        <section class="form card">
+        <section class="form card" style="max-width: 380px;">
             <h1 class="form-heading">Log In ⚡</h1>
             <p class="input-error text-center" id="login_error">Invalid username or password.</p>
 
@@ -50,5 +51,3 @@ include('header.php');
 <?php } ?>
 
 <?php include('footer.php'); ?>
-
-<script src="public/js/index.js"></script>

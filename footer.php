@@ -8,5 +8,6 @@
     </div>
 </footer>
 
+<script src="public/js/index.js"></script>
 </body>
 </html>

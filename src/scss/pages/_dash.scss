@@ -43,9 +43,11 @@
         flex-direction: column;
         justify-content: center;
         gap: 1em;
+        // max-width: 440px;
     }
 
     &-account {
+        background-color: $grey-100;
         border: none;
         display: flex;
         flex-direction: column;
@@ -66,5 +68,26 @@
 
     li {
         line-height: 1.5;
+    }
+}
+
+/*****************
+    Books Page
+******************/
+.dashbooks {
+    small .btn-link {
+        font-size: $fs-xsmall;
+    }
+}
+
+/*****************
+    Notes Page
+******************/
+.dashnotes {
+    &-userimage {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
     }
 }

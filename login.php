@@ -1,9 +1,9 @@
  <?php
 
 session_start();
-if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']==false) {
-  header('Location: login-form.php');
-}
+// if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']==false) {
+//   header('Location: login-form.php');
+// }
 
 require 'connect.php';
 
@@ -42,7 +42,7 @@ if ($stmt = $db->prepare('SELECT user_id, user_pass FROM users WHERE user_name =
     }
   } else {
     // Incorrect username
-    echo 'Incorrect username and/or password!';
+    echo 'Incorrect username and/or password! <a href="login-form.php">Login again</a>';
   }
 }
 

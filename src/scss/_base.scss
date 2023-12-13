@@ -98,4 +98,8 @@ ol {
 #editor,
 .ck-editor {
     max-width: 800px;
+
+    &__editable {
+        min-height: 200px;
+    }
 }

@@ -9,7 +9,7 @@ require('connect.php');
 
 // This month's read.
 $this_month_query = "SELECT bus.suggestion_id, bus.book_id, bus.sugg_date
-                , b.book_title, b.book_subtitle, b.book_author
+                , b.book_title, b.book_subtitle, b.book_author, b.book_image
                 FROM books_users_suggestions bus
                 JOIN books b ON bus.book_id = b.book_id 
                 WHERE bus.is_selected = 1 AND
@@ -37,7 +37,7 @@ $next_month = $next_month_stmt->fetch();
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <small>📖 Book Club</small>
+                <small>📚 Book Club</small>
                 <h1>Get & Make Summaries <br>of Your Favourite Books.</h1>
                 <p>🖊 Read. Review. Make notes. Monthly.</p>
 
@@ -60,11 +60,11 @@ $next_month = $next_month_stmt->fetch();
                 <p><?=$this_month['book_subtitle']?></p>
                 <p><em>by</em>&ensp;<?=$this_month['book_author']?></p>
                 <div class="monthread-cta">
-                    <a href="book-notes/show.php?book_id=<?=$this_month['book_id']?>" class="btn-outline-primary">Read BookNotes -></a>
+                    <a href="dashboard/notes?book_id=<?=$this_month['book_id']?>" class="btn-outline-primary">Read BookNotes -></a>
                 </div>
             </div>
             <div class="monthread-image">
-                <img src="uploads/million_dollar_habits_brian_tracy.png" alt="million dollar habit">
+                <img src="uploads/<?=$this_month['book_image']?>" alt="<?=$this_month['book_title']?>">
             </div>
         </div>
         <div class="monthread-sugesstioncard">
@@ -82,7 +82,7 @@ $next_month = $next_month_stmt->fetch();
 
     <section class="indexcta py-2">
         <h2>📩 Get Invited</h2>
-        <form action="#" class="form">
+        <form action="signup-form.php" class="form" style="max-width: 380px;">
             <div class="form-control">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email">
