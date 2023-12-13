@@ -41,9 +41,10 @@ include(ROOT_PATH . 'header.php');
             <h1><?=$note['book_title']?></h1>
             <small>
                 Posted on
-                <time datetime="<?=$note['date_created']?>"><?=date_format(date_create($note['date_created']), 'F j, Y H:ia') ?><time>
-                &ensp; <a href="<?=BASE_URL.'dashboard/notes-edit.php?id='.$note['note_id']?>">edit</a>
+                <time datetime="<?=$note['date_created']?>"><?=date_format(date_create($note['date_created']), 'F j, Y g:ia') ?><time>
+                &ensp; 
             </small>
+            <span><a href="<?=BASE_URL.'dashboard/notes-edit.php?id='.$note['note_id']?>">edit</a></span>
         </div>
     </div>
     <div class="container mt-5" id="content">
