@@ -35,6 +35,11 @@ $books_query = "SELECT book_id, book_title FROM books;";
 $books_stmt = $db->prepare($books_query);
 $books_stmt->execute(); 
 
+$book = false;
+if($_GET && $_GET['book_id']) {
+    $book = filter_input(INPUT_GET, 'book_id', FILTER_SANITIZE_NUMBER_INT);
+}
+
 include(ROOT_PATH . 'header.php'); 
 
 ?>
@@ -46,24 +51,24 @@ include(ROOT_PATH . 'header.php');
     </div>
 
     <section class="content-center">
-        <div class="form card" style="max-width: 1200px;">
+        <div class="form card" style="max-width: 1000px;">
             <form action="notes-new.php" method="POST" enctype='multipart/form-data'>
                 <h2>New note</h2>
 
                 <input type="hidden" name="user_id" value="<?=$_SESSION['user_id']?>">
 
                 <div class="form-control">
-                    <label>📙 Book</label>
+                    <label class="fw-medium">📗 What book?</label>
                     <select class="form-select" name="book_id" style="max-width: 400px;">
                         <option selected disabled>Select a book</option>
                         <?php while($books = $books_stmt->fetch()): ?>
-                        <option value="<?=$books['book_id']?>"><?=$books['book_title']?></option>
+                        <option value="<?=$books['book_id']?>" <?= $book==$books['book_id'] ? 'selected' : null?>><?=$books['book_title']?></option>
                         <?php endwhile; ?>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="content">Content</label>
+                    <label for="content" class="fw-medium">Note content</label>
                     <textarea name="content" id="editor" cols="60" rows="10" placeholder="What's your opinion on this book..."></textarea>
                 </div>
 

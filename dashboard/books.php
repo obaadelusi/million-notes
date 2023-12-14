@@ -19,15 +19,42 @@ $books_count_stmt = $db->prepare($books_count_query);
 $books_count_stmt->execute(); 
 $books_count = $books_count_stmt->fetch();
 
-$books_query = "SELECT b.book_id, b.book_title, b.book_subtitle,
-                       b.book_author, b.book_pagecount, g.genre_name 
-                FROM books b
-                JOIN books_genres g ON b.genre_id=g.genre_id 
-                WHERE b.is_active = 1
-                ORDER BY b.date_added DESC";
+if($_GET && !empty($_GET['q'])) {
+    $q = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $books_query = "SELECT b.book_id, b.book_title, b.book_subtitle,
+                        b.book_author, b.book_pagecount, g.genre_name 
+                    FROM books b
+                    JOIN books_genres g ON b.genre_id=g.genre_id 
+                    WHERE b.is_active = 1 AND
+                        (b.book_title LIKE '%$q%' OR b.book_subtitle LIKE '%$q%')
+                    ORDER BY b.date_added DESC LIMIT 10";
+
+    if(!empty($_GET['genre_id'])) {
+        $genre_id = filter_input(INPUT_GET, 'genre_id', FILTER_SANITIZE_NUMBER_INT);
+        $books_query = "SELECT b.book_id, b.book_title, b.book_subtitle,
+        b.book_author, b.book_pagecount, g.genre_name 
+                        FROM books b
+                        JOIN books_genres g ON b.genre_id=g.genre_id 
+                        WHERE b.is_active = 1 AND
+                            b.book_title LIKE '%$q%' AND
+                            b.genre_id = $genre_id 
+                        ORDER BY b.date_added DESC LIMIT 10";
+    }
+
+} else {
+    $books_query = "SELECT b.book_id, b.book_title, b.book_subtitle,
+                        b.book_author, b.book_pagecount, g.genre_name 
+                    FROM books b
+                    JOIN books_genres g ON b.genre_id=g.genre_id 
+                    WHERE b.is_active = 1
+                    ORDER BY b.date_added DESC LIMIT 10";
+}
 $books_stmt = $db->prepare($books_query);
 $books_stmt->execute(); 
-// $books = $books_stmt->fetch();
+
+$genres_query = "SELECT * FROM books_genres ORDER BY genre_name ASC";
+$genres_stmt = $db->prepare($genres_query);
+$genres_stmt->execute(); 
 
 include(ROOT_PATH . 'header.php'); 
 
@@ -43,6 +70,19 @@ include(ROOT_PATH . 'header.php');
 
     <div class="container py-4">
         <a href="<?=BASE_URL.'dashboard/books-new.php'?>" class="btn-primary">New Book +</a>
+
+        <form action="books.php">            
+            <div class="input-group my-3">
+                <input type="text" style="max-width: 400px" id="bookSearch" name="q" placeholder="Enter word in book title/subtitle...">
+                <select class="form-select" id="genreSelect" style="max-width: 260px" name="genre_id">
+                    <option selected>All Genres</option>
+                    <?php while($g = $genres_stmt->fetch()): ?>
+                    <option value="<?=$g['genre_id']?>"><?=$g['genre_name']?></option>
+                    <?php endwhile; ?>
+                </select>
+                <button class="btn btn-outline-primary" type="submit">Search book</button>
+            </div>
+        </form>
     </div>
 
     <section class="dashbooks container">
@@ -52,7 +92,7 @@ include(ROOT_PATH . 'header.php');
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Genres</th>
+                    <th scope="col">Genre</th>
                     <th scope="col">Author</th>
                     <th scope="col">Page count</th>
                     <th scope="col">Links</th>
@@ -61,7 +101,7 @@ include(ROOT_PATH . 'header.php');
             <tbody>
                 <?php if($books_stmt->rowCount() == 0) : ?>
                 <tr>
-                    <td colspan='4'>No books yet</td>
+                    <td colspan='6' class="text-center">*No books yet*</td>
                 </tr>
                 <?php exit; endif; ?>
 
@@ -69,17 +109,15 @@ include(ROOT_PATH . 'header.php');
                 <tr>
                     <th scope="row"><?=$row_count?></th>
                     <td>
-                        <span class="text-success"><?=$books['book_title']?></span><br/>
-                        <small><?=$books['book_subtitle']?></small><br/>
+                        <h4 class="text-success"><?=$books['book_title']?></h4>
+                        <p><?=$books['book_subtitle']?></p>
                         <small><a href="<?=BASE_URL.'dashboard/books-edit.php?id='.$books['book_id'] ?>" class="btn-link">Edit</a></small>
                     </td>
                     <td><?=$books['genre_name']?></td>
                     <td><?=$books['book_author']?></td>
                     <td><?=$books['book_pagecount']?></td>
                     <td>
-                        <a href="#" class="btn-link">Add notes</a> / 
-                        <a href="#" class="btn-link">Review</a>
-                    </td>
+                        <a href="<?=BASE_URL.'dashboard/notes-new.php?book_id='.$books['book_id']?>" class="btn-link">Add notes</a>                     </td>
                 </tr>
                 <?php $row_count++; endwhile; ?>
             </tbody>

@@ -93,7 +93,7 @@ if($_POST && isset($_POST['book-title']) && isset($_POST['book-author'])
 }
 
 // Genres query.
-$genres_query = "SELECT * FROM books_genres;";
+$genres_query = "SELECT * FROM books_genres ORDER BY genre_name ASC;";
 $genres_stmt = $db->prepare($genres_query);
 $genres_stmt->execute(); 
 
