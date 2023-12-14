@@ -2,13 +2,14 @@
 
 session_start();
 
-$login_url = BASE_URL . 'login-form.php';
+require_once("../config.php");
+
+$login_page = BASE_URL . 'login-form.php';
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']==false) {
-    header("Location: $login_url");
+    header("Location: $login_page");
     exit;
 }
 
-require_once("../config.php");
 require_once(ROOT_PATH . 'connect.php');
 
 $books_page = BASE_URL . 'dashboard/books.php';
