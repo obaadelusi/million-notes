@@ -147,8 +147,7 @@ include(ROOT_PATH . 'header.php');
                     </select>
                 </div>
 
-                <?php if($book['book_image']) {
-                    $image = $book['book_image'] ?>
+                <?php if($book['book_image']) { ?>
                     <img src="<?=BASE_URL . 'uploads/' . $book['book_image']?>" alt="<?=$book['book_title']?>">
                 <?php } ?>
 

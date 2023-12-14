@@ -77,7 +77,7 @@ include(ROOT_PATH . 'header.php');
             <?php endif ?>
             </article>
         </div>
-        <?php $row_count++; endwhile; ?>
+        <?php endwhile; ?>
     </section>
 </main>
 

@@ -119,7 +119,9 @@ include(ROOT_PATH . 'header.php');
                     <td><?=$books['book_author']?></td>
                     <td><?=$books['book_pagecount']?></td>
                     <td>
-                        <a href="<?=BASE_URL.'dashboard/notes-new.php?book_id='.$books['book_id']?>" class="btn-link">Add notes</a>                     </td>
+                        <a href="<?=BASE_URL.'dashboard/books-show.php?id='.$books['book_id']?>" class="btn-link">View book</a> / 
+                        <a href="<?=BASE_URL.'dashboard/notes-new.php?book_id='.$books['book_id']?>" class="btn-link">Add notes</a>
+                    </td>
                 </tr>
                 <?php $row_count++; endwhile; ?>
             </tbody>

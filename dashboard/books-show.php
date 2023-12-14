@@ -36,19 +36,34 @@ include(ROOT_PATH . 'header.php');
 <main class="main" id="dashbooks-show">
     <?php if ($id): ?>
     <div class="section-header">
-        <div class="container">
-            <h1><?=$book['book_title']?></h1>
-            <p><?=$book['book_title']?></p>
-            <small>
-                Added on
-                <time datetime="<?=$book['date_added']?>"><?=date_format(date_create($book['date_added']), 'F j, Y g:ia') ?><time>
-                &ensp; 
-            </small>
-            <span><a href="<?=BASE_URL.'dashboard/books-edit.php?id='.$book['book_id']?>">edit</a></span>
+        <div class="container d-flex gap-3 flex-wrap">
+            <div class="dashbooks-img">
+                <?php if($book['book_image']) { ?>
+                    <img src="<?=BASE_URL . 'uploads/' . $book['book_image']?>" alt="<?=$book['book_title']?>">
+                <?php } ?>
+            </div>
+            <div>
+                <h1><?=$book['book_title']?></h1>
+                <p><?=$book['book_subtitle']?></p>
+                <p><?=$book['genre_name']?> • <?=$book['book_pagecount']?> pages • <em>Published on <?=$book['date_pub']?> • </em></p>
+                <small>
+                    Added on
+                    <time datetime="<?=$book['date_added']?>"><?=date_format(date_create($book['date_added']), 'F j, Y g:ia') ?><time>
+                    &ensp;
+                </small>
+                <small><a href="<?=BASE_URL.'dashboard/books-edit.php?id='.$book['book_id']?>">edit</a></small>
+            </div>
         </div>
     </div>
+
     <div class="container my-5" id="content">
-        <?=htmlspecialchars_decode($book['content'])?> 
+        <h3>Subjects:</h3>
+        <p><?=$book['book_subjects']?></p>
+
+        <h3>Description:</h3>
+        <p><?=htmlspecialchars_decode($book['book_desc'])?> </p>
+
+        <h3></h3>
     </div>
     <?php else: ?>
     <p>No book selected.</p>

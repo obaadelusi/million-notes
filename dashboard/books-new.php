@@ -135,7 +135,7 @@ include(ROOT_PATH . 'header.php');
 
                 <div class="form-control">
                     <label for="book-pagecount">Page count</label>
-                    <input type="number" id="book-pagecount" name="book-pagecount">
+                    <input type="number" id="book-pagecount" name="book-pagecount" required>
                 </div>
 
                 <div class="form-buttons">
