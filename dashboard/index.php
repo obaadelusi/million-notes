@@ -2,8 +2,9 @@
 
 session_start();
 
+$login_url = BASE_URL . 'login-form.php';
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']==false) {
-    header('Location: login-form.php');
+    header("Location: $login_url");
     exit;
 }
 

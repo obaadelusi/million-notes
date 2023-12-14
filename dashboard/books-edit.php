@@ -2,15 +2,16 @@
 
 session_start();
 
+$login_url = BASE_URL . 'login-form.php';
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin']==false) {
-    header('Location: login-form.php');
+    header("Location: $login_url");
     exit;
 }
 
 require_once("../config.php");
 require_once(ROOT_PATH . 'connect.php');
 
-$url = BASE_URL . 'dashboard/books.php';
+$books_page = BASE_URL . 'dashboard/books.php';
 
 function file_upload_path($original_filename, $upload_subfolder_name = 'uploads') {
     $current_folder = dirname(__FILE__);
@@ -88,7 +89,7 @@ if($_POST && isset($_POST['book-title']) && isset($_POST['book-author'])
     }
 
     if($stmt->execute()) {
-        header("Location: $url");
+        header("Location: $books_page");
     }
 }
 
