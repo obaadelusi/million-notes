@@ -43,7 +43,7 @@ $next_month = $next_month_stmt->fetch();
 
                 <div class="hero-cta">
                     <a href="signup-form.php" class="btn-primary btn-lg">Join Club</a>
-                    <a href="#" class="btn-link">View Monthly Reads</a>
+                    <span class="fs-small text-body-secondary">You're invited</span>
                 </div>
             </div>
             <div class="hero-image">
@@ -52,7 +52,7 @@ $next_month = $next_month_stmt->fetch();
         </div>
     </section>
 
-    <section class="monthread container py-2">
+    <section class="monthread container py-2 my-4">
         <div class="monthread-card ">
             <div class="monthread-content">
                 <small>⭐ This Month's Read</small>
@@ -80,7 +80,7 @@ $next_month = $next_month_stmt->fetch();
         </div>
     </section>
 
-    <section class="indexcta py-2">
+    <section class="indexcta py-4">
         <h2>📩 Get Invited</h2>
         <form action="signup-form.php" class="form" style="max-width: 380px;">
             <div class="form-control">
