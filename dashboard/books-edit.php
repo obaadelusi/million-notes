@@ -123,7 +123,7 @@ include(ROOT_PATH . 'header.php');
 
     <section class="content-center">
         <div class="form card" style="max-width: 460px;">
-            <form action="edit-book.php" method="POST" enctype='multipart/form-data'>
+            <form action="books-edit.php" method="POST" enctype='multipart/form-data'>
                 <h2 class="form-heading">Edit: <?=$book['book_title']?></h2>
 
                 <input type="hidden" name="book_id" value="<?=$book['book_id']?>">

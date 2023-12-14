@@ -100,7 +100,7 @@ include(ROOT_PATH . 'header.php');
 
     <section class="content-center">
         <div class="form card" style="max-width: 460px;">
-            <form action="new-book.php" method="POST" enctype='multipart/form-data'>
+            <form action="books-new.php" method="POST" enctype='multipart/form-data'>
                 <h2 class="form-heading">New book</h2>
 
                 <div class="form-control">
