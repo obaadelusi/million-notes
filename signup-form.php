@@ -26,23 +26,23 @@ include('header.php'); ?>
             <p class="text-center">🔱 Join the exclusive Million Club.</p>
             <div class="form-control">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" minlength="3">
+                <input type="text" name="username" id="username">
                 <small class="input-error" id="username_error">Please enter a valid username</small>
                 <small class="input-error" id="usernameformat_error">Letters, numbers, underscores only e.g. jane_bubu33</small>
             </div>
             <div class="form-control">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" minlength="6" value="<?= !empty($email) ? $email : null;?>">
+                <input type="email" name="email" id="email" value="<?= !empty($email) ? $email : null;?>">
                 <small class="input-error" id="email_error">Please enter your email address</small>
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" minlength="6">
+                <input type="password" name="password" id="password" >
                 <small class="input-error" id="password_error">Password must be 6 characters or more</small>
             </div>
             <div class="form-control">
                 <label for="confirmPassword">Confirm password</label>
-                <input type="password" name="confirmPassword" id="confirmPassword" minlength="6">
+                <input type="password" name="confirmPassword" id="confirmPassword" >
                 <small class="input-error" id="confirmPassword_error">Re-enter password</small>
             </div>
             <div class="form-buttons">
