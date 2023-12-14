@@ -37,7 +37,7 @@
                 <?php } else { ?>
                     <li><a href="index.php" class="nav-link">Home</a></li>
                     <li><a href="about.php" class="nav-link">About</a></li>
-                    <li><a href="about.php" class="nav-link">📚 Books</a></li>
+                    <!-- <li><a href="dashboard.php" class="nav-link">📚 Books</a></li> -->
                     <li><a href="login-form.php" class="btn-link">Log In</a></li>
                     <li><a href="signup-form.php" class="btn-outline-primary">Join Club</a></li>
                 <?php } ?>

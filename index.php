@@ -74,7 +74,7 @@ $next_month = $next_month_stmt->fetch();
                 <p>Top Suggestion: 🥇 Becoming <em>by</em>&ensp;Michelle Obama</p>
                 <p></p>
                 <div class="monthread-cta">
-                    <a href="book-suggestions" class="btn-link">View Suggestions -></a>
+                    <a href="<?=BASE_URL . 'dashboard/books.php'?>" class="btn-link">View Books -></a>
                 </div>
             </div>
         </div>
